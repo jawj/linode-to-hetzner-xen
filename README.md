@@ -1,2 +1,55 @@
-linode-to-hetzner-xen
-=====================
+How to migrate from Linode to Hetzner
+=====================================
+
+Why?
+----
+
+Tomorrow, I'll have had Linodes running for exactly 4 years. Prior to that I was on Slicehost (and prior to that, TextDrive shared hosting).
+
+I like Linode, and there are some **good reasons to stay**.
+
+* Easy-to-use web interface and web-based console.
+* Up-to-date and pretty wide selection of distros.
+* Fast network, and decent disk I/O performance for a VPS. CPU power isn't bad either.
+* Extremely reliable — in the London and East Coast US data centres, in my experience.
+* Regular service upgrades — disk space, CPU, and most recently RAM — for everyone, including current customers.
+* Famously responsive and helpful support. (Which I barely ever need).
+
+
+But recently, **I've been thinking about moving services to Heroku or Hetzner**. 
+
+* Heroku is dearer and easier. Moving to Heroku would mean largely giving up on sysadmin, allowing it to take more of my money and less of my time. 
+* Hetzner is cheaper and (a bit) more time-consuming. Moving to Hetzner would mean _embracing_ sysadmin, continuing to become better at it, and allowing it to take a little more of my time and less of my money.
+
+**Linode feels in some ways like an unhappy compromise** between these two options. I have to do almost as much sysadmin as I would for a dedicated Hetzner box running Xen. And I have to pay not so far off what it would cost me to give up sysadmin almost entirely on Heroku.
+
+
+There are **a couple of specific reasons** I might switch away from Linode.
+
+* **Memory.** My Linodes run various web apps which are basically interfaces to a Postgres database. Performance is thus constrained more-or-less exclusively by RAM. As long as my database fits in disk cache, things are snappy. As soon as Postgres has to start hitting the disk, we have a problem. The recent RAM doubling is a big help here. However, cost per GB of RAM is still pretty high, which means I'm running with less than I'd like.
+* **Security.** Incidents in the last couple of days have cast some doubt on Linode's competence in security. This is a serious worry.
+
+There are also some specific reasons that have been keeping me off Heroku and Hetzner.
+
+* Heroku's *not-so-intelligent* routing shenanigans have slightly tarnished their appeal of late. 
+* With Hetzner, meanwhile, my main worry is disk failure. Sure, you get two disks and can set them up in RAID1 with `mdadm`. But identical disks are liable to fail close together, and I don't look forward to using `mdadm` in anger with the clock ticking and my data at risk. Linode and Heroku deal with redundant storage transparently, and I think I trust them to do it right.
+
+I still haven't decided what to do in the long run. If I were going to use Hetzner for production, I'd go for one of the machines with 16GB or 32GB ECC memory. But meanwhile, I got a 4GB server for about €25/month in Hetzner's ongoing auction, and have been experimenting with moving Linodes to my own Xen setup on this dedicated machine.
+
+
+How?
+----
+
+What's really nice about this, in theory, is that you can install Xen on your Hetzner box, then **transfer your Linode disk images directly** and boot them up with minimal downtime and few additional deployment steps.
+
+I realise that this isn't such an advantage for everyone: maybe you've invested in push-button deployment. To date, though, I haven't. I have a small number of systems, of varying ages, manually set up and configured. One of these days, I'll learn to use Puppet, Chef or similar. But even when I do, it's not going to help much with these legacy systems. Hence, this direct transfer of disk images is really appealing to me.
+
+
+However, it turns out that the **Xen documentation, official and otherwise, is less than ideal**. It is, variously, non-existent, inconsistent, contradictory, or just plain bad. 
+
+It therefore took me a few days' wrestling to make the transfer from Linode to Hetzner work (mostly for networking reasons). And I thought, therefore, that the necessary steps might be worth sharing.
+
+I've produced this document as a GitHub repo to allow for corrections/enhancements via pull requests, and for forking (e.g. for different hosting providers and distros).
+
+If you follow these instructions, I take absolutely no responsibility and accept no liability for bad things happening. Obviously. But I sincerely hope they don't.
+
