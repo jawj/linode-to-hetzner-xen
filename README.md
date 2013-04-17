@@ -28,8 +28,8 @@ Then, there are **a couple of specific reasons** I might switch away from Linode
 
 There are also some specific reasons that have been keeping me off Heroku and Hetzner.
 
-* Heroku's *not-so-intelligent* routing shenanigans have slightly tarnished their appeal. 
-* With Hetzner, my main worry is disk failure. Sure, you get two disks and can set them up in RAID1 with `mdadm`. But identical disks are liable to fail close together, and I don't look forward to using `mdadm` in anger with the clock ticking and my data at risk. Linode and Heroku deal with redundant storage transparently, and I think I trust them to do it right.
+* Heroku's **not-so-intelligent routing** shenanigans have slightly tarnished their appeal. 
+* With Hetzner, my main worry is **disk failure**. Sure, you get two disks and can set them up in RAID1 with `mdadm`. But identical disks are liable to fail close together, and I don't look forward to using `mdadm` in anger with the clock ticking and my data at risk. Linode and Heroku deal with redundant storage transparently, and I think I trust them to do it right.
 
 I still haven't decided what to do in the long run. If I were going to use Hetzner for production, I'd go for one of the machines with 16GB or 32GB ECC memory. But meanwhile, I got a 4GB server for about €25/month in Hetzner's ongoing auctions, and have been experimenting with moving Linodes to my own Xen setup on this dedicated machine.
 
