@@ -43,4 +43,4 @@ What's really nice about this, in theory, is that you can install Xen on your He
 
 However, it turns out that the **Xen documentation, official and otherwise, is less than ideal**. It is, variously, non-existent, inconsistent, contradictory, and just plain bad. It thus took me a few days' wrestling to make the transfer from Linode to Hetzner work, for reasons mostly to do with networking. And I therefore thought these steps might be worth sharing.
 
-So, with that out the way, let's [proceed to the instructions](instructions.md).
+**So, with that out the way, let's [proceed to the instructions](instructions.md).**
