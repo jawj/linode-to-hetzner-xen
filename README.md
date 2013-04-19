@@ -1,5 +1,5 @@
-How to migrate from Linode to Hetzner
-=====================================
+Migrating from Linode to Hetzner
+================================
 
 Why?
 ----
@@ -42,8 +42,6 @@ What's really nice about this, in theory, is that you can install Xen on your He
 (I realise that this isn't such an advantage for everyone: if you have some sort of push-button deployment set-up, say with Chef or Puppet, moving hosts is probably no big deal. To date, though, I haven't invested the time and effort to do things this way. I have a small number of systems, of varying ages, manually set up and configured. One of these days, I'll get round to learning Chef, Puppet, or similar. But even when I do, it's not going to help much with these legacy systems. Hence, this direct transfer of disk images is really appealing to me.)
 
 However, it turns out that the **Xen documentation, official and otherwise, is less than ideal**. It is, variously, non-existent, inconsistent, contradictory, and just plain bad. It thus took me a few days' wrestling to make the transfer from Linode to Hetzner work, for reasons mostly to do with networking. And I therefore thought these steps might be worth sharing.
-
-_If you follow these instructions, I take absolutely no responsibility and accept no liability for bad things happening. Obviously. But I sincerely hope they don't._
 
 Note: I've produced this document as a GitHub repo to allow for corrections/enhancements via pull requests, and for forking (e.g. for different hosting providers and distros).
 
