@@ -1,6 +1,3 @@
-Linode to Hetzner Xen
-=====================
-
 These instructions will walk you through the process of migrating a Linode VPS to your own Xen host running on a Hetzner dedicated server. 
 
 **For the background to these instructions, please [see the README](README.md).**
